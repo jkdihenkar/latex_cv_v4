@@ -1,0 +1,232 @@
+
+\documentclass[a4paper,12pt,final]{memoir}
+
+% misc
+\renewcommand{\familydefault}{bch}	% font
+\pagestyle{empty}					% no pagenumbering
+\setlength{\parindent}{0pt}			% no paragraph indentation
+
+
+% required packages (add your own)
+\usepackage{flowfram}										% column layout
+\usepackage[top=1cm,left=1cm,right=1cm,bottom=1cm]{geometry}% margins
+\usepackage{graphicx}										% figures
+\usepackage{url}											% URLs
+\usepackage[usenames,dvipsnames]{xcolor}					% color
+\usepackage{multicol}										% columns env.
+	\setlength{\multicolsep}{0pt}
+\usepackage{paralist}										% compact lists
+\usepackage{tikz}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Create column layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% define length commands
+\setlength{\vcolumnsep}{\baselineskip}
+\setlength{\columnsep}{\vcolumnsep}
+
+% frame setup (flowfram package)
+% left frame
+\newflowframe{0.2\textwidth}{\textheight}{0pt}{0pt}[left]
+	\newlength{\LeftMainSep}
+	\setlength{\LeftMainSep}{0.2\textwidth}
+	\addtolength{\LeftMainSep}{1\columnsep}
+ 
+% small static frame for the vertical line
+\newstaticframe{1.5pt}{\textheight}{\LeftMainSep}{0pt}
+ 
+% content of the static frame
+\begin{staticcontents}{1}
+\hfill
+\tikz{%
+	\draw[loosely dotted,color=Blue,line width=1.5pt,yshift=0]
+	(0,0) -- (0,\textheight);}%
+\hfill\mbox{}
+\end{staticcontents}
+ 
+% right frame
+\addtolength{\LeftMainSep}{1.5pt}
+\addtolength{\LeftMainSep}{1\columnsep}
+\newflowframe{0.7\textwidth}{\textheight}{\LeftMainSep}{0pt}[main01]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% define macros (for convience)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Sep}{\vspace{1.5em}}
+\newcommand{\SmallSep}{\vspace{0.5em}}
+
+\newenvironment{AboutMe}
+	{\ignorespaces\textbf{\color{Blue} About me}}
+	{\Sep\ignorespacesafterend}
+	
+\newcommand{\CVSection}[1]
+	{\Large\textbf{#1}\par
+	\SmallSep\normalsize\normalfont}
+
+\newcommand{\CVItem}[1]
+	{\textbf{\color{Blue} #1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+% Left frame
+%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
+	\hfill
+	\includegraphics[width=0.6\columnwidth]{photo.jpg}
+	\vspace{-7cm}
+\end{figure}
+
+\begin{flushright}\small
+	Jay Dihenkar \\
+	\url{jkdihenkar@gmail.com}  \\
+	(91) 9016315489
+\end{flushright}\normalsize
+\framebreak
+
+
+% Right frame
+%%%%%%%%%%%%%%%%%%%%
+\Huge\bfseries {\color{Blue} Jay Dihenkar} \\
+\Large\bfseries  Platform Infrastructure and Security Enthusiast \\
+
+\normalsize\normalfont
+
+% About me
+\begin{AboutMe}
+"h4ck3r", Believe in getting things just because.
+\end{AboutMe}
+
+% Skills
+
+\CVSection{Skills}
+\CVItem{Platforms}
+\begin{list}{*}{\setlength\itemsep{-0.1cm}}
+	\item Building Robust and Scalable Platform Infrastructure and Data Pipelines. Well-versed with Linux Administration, Database Deployments (Cassandra, Elasticsearch), Cloud Infrastructure, Config Management (IaC),  .
+\end{list}
+
+\CVItem{Languages and Components}
+\begin{list}{*}{\setlength\itemsep{-0.1cm}}
+	\item Languages: Python 2/3, Bash, C/C++, Java, Golang, Javascript
+	\item Big Data Components - Cassandra, Elasticsearch, DynamoDB, Redshift, Athena, SQLite, Redis
+	\item IDS/IPS and Security Components: OSSEC, OpenVAS, Kali Linux Security Tool kit
+\end{list}
+\SmallSep
+
+\CVItem{Design Concepts}
+\begin{list}{*}{\setlength\itemsep{-0.1cm}}
+	\item Distributed Systems Design and Architecture
+	\item Data structures and algorithmic complexity.
+	\item Sound Debugging and Tuning JVM internals and performance
+	\item Infrastructure as code, Business Continuity Design and Execution
+\end{list}
+\SmallSep
+
+
+% Experience
+\CVSection{Experience}
+\CVItem{Evive Software Analytics, Bangalore [ March 2016 - Present ] }\\
+Jr. Systems Architect
+\begin{list}{*}{\setlength\itemsep{-0.2cm}}
+    \item Core Architect for Cloud Enablement Project - Enable on-prem to AWS Cloud Migration, moving towards Containerization - DOCKER and Kubernetes, design and implementation of AWS Serverless architecture, AWS Security Assessment Project and HIPAA/Hitrust compliance.
+    \item Designed the setup of Big Data components which includes Cassandra, ELK, Redis Clusters to achieve optimal performance, fault tolerance, load balancing and failovers.
+    \item Initial design and implementation of Consul as a service discovery tool and Vault for secure secrets storage, Internal PKI Infrastructure, SaltStack as a configuration management tool and automating system infrastructure, Red Team [Operations, Procedures, Guidelines and Documentations]
+    \item Administering Linux system components and tuning various system parameters. CIS Benchmarks, OpenSCAP adherence all systems
+    \item Active participation in Security Audits ( SOC2, HiTrust, Security RFPs etc.. )
+    \item Design and review of Security tools, policies, scan reports 
+    \item Internal apps and scripts in Python, JAVA, Golang and BASH.
+\end{list}
+\SmallSep
+
+\newpage
+\framebreak
+\framebreak
+
+\CVItem{ShieldSquare, Bangalore [ July 2015 - Janurary 2016 ] }\\
+Research Engineer L1
+\begin{list}{*}{\setlength\itemsep{-0.2cm}}
+    \item Design and development of connectors for product in PHP, NodeJS, Java, RubyOnRails, Python
+    \item Contributing to main stream products by implementing features and fixes in Java.
+    \item Initial design and implementation of Apache Server Connector Module in C (APR)
+    \item Maintenance and Operations of data components as Redis, MongoDB and MySQL Clusters 
+    \item Debugging and resolving integration issues in end clients production environments
+\end{list}
+\SmallSep
+
+
+\CVSection{Achievements}
+\CVItem{Multiple Memory related issues and bugs in Elasticsearch}\\
+Discovered and successfully reproduced multiple security and memory related issues in Elasticsearch.
+Ref link: \url{https://goo.gl/ua8x5L} and \url{https://goo.gl/8ovn8q} - Elastic Github
+\SmallSep
+
+\CVItem{CISSP Certification}\\
+Certification Number: 579977
+\SmallSep
+
+\CVItem{CKA Certification}\\
+Certification Number: CKA-1900-002152-0100
+\SmallSep
+
+\CVItem{CKAD Certification}\\
+Certification Number: CKAD-1900-0827-0100
+\SmallSep
+
+\CVItem{Academic}\\
+Completed B.E. Computer Science and stood 16th in Gujarat Technological University.
+\SmallSep
+
+\CVItem{Technical Competitions}\\
+State and National Level Technical Events
+\begin{list}{*}{\setlength\itemsep{-0.2cm}}
+    \item 1st Place National Level Java Programming Contest, ByteCode conducted at Footprints 2014 at MSU, Baroda
+    \item 2nd Place at National Level Technical Paper Presentation Contest, Protocol conducted at Footprints 2014 at MSU, Baroda
+    \item 2nd Place at National Level Technical Symposium,  Prakarsh 2014, conducted by SVIT, Vasad
+    \item 1st Place in Linux Mania at Shashvat 2014, ADIT - Vidyanagar, Gujarat
+    \item 1st Place in Computrix at i-Maze 2014, GCET - Vidyanagar, Gujarat
+    \item 2nd Place at Con-C at Shashvat 2014, ADIT - Vidyanagar, Gujarat
+\end{list}
+\SmallSep
+
+\CVSection{Online Profiles}
+\CVItem{Competitive Programming and challenges}\\
+HackerEarth [ \url{http://www.hackerearth.com/users/jkdihenkar} ]
+\SmallSep
+
+\CVItem{Security Challenges}\\
+Root-Me [ \url{https://www.root-me.org/Jay-Dihenkar?lang=en} ]
+\SmallSep
+
+\CVItem{OpenSource Projects and Contributions}\\
+Github Profile [ \url{https://github.com/jkdihenkar} ]
+\Sep
+
+\newpage
+\framebreak
+\framebreak
+
+% Education
+\CVSection{Education}
+\CVItem{B.E. Computer Science [ 2011 - 2015 ]}\\
+Parul Institute of Engineering and Technology, Vadodara\\
+Scored 8.45 CPI , Ranked 16th in State University.
+\SmallSep
+
+\CVItem{Higher Secondary [ 2009 - 2011] }\\
+St. Joseph's English Teaching High School, Valsad\\
+Scored 72.15\%
+\SmallSep
+
+\CVItem{Secondary [ 2007 - 2009 ]}\\
+St. Joseph's English Teaching High School, Valsad\\
+Scored 81.69\%\\
+\Sep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
